@@ -62,12 +62,15 @@
 }
 
 a {
-	color:#26A65B;
+        color:#26A6DB;
+	/*color:#26A65B;*/
 	/*color:#22333B;*/
 }
 
 a:hover{
-	color:#1BBC9B;
+	color:#1BBCEB;
+        /*color:#1BBC9B;*/
+
 	cursor: pointer;
 }
 
