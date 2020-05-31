@@ -1,30 +1,233 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Grant Skaggs, Comp Sci Genius</title>
-		<!-- link to main stylesheet -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Grant Skaggs!</h1>
-				<p>I'm a CS student at UT Austin in the Turing Scholar Honors Program <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
-        		<li><a href="https://github.com/gskaggs">github.com/gskaggs</a></li>
-			</ul>
-		</footer>
-	</body>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Rushi Shah</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/vanilla.js"></script>
+  <script src="js/site.js"></script>
+  <!-- Animation stuff -->
+  <script src="js/three.min.js"></script>
+  <script src="js/animation.js"></script> 
+
+
+</head>
+<body class="code-snippets-visible">
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <section class="header">
+      <div class="north">
+        <h1 class="title fancy-font">Rushi Shah</h1>
+      </div>
+      <div class="s">
+        <div class="row">
+          <div class="twelve columns middle">
+            <img class="prof-pic" src="public/prof-pic6.jpg" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="six columns">
+            <h3 class="fancy-font west">
+	      <a href="https://rshah.org/blog">Blog</a>
+            </h3>
+          </div>
+          <div class="six columns">
+	    <h3 class="fancy-font west">
+              <a href="https://twitter.com/2016rshah">Twitter</a>
+            </h3>
+          </div>
+        </div>
+        <div class="south">
+            <a href="https://github.com/2016rshah">
+              <img id="placeholder1" src="public/empty.svg" class="gh-chart" />
+              <img id="actual1" class="gh-chart" />
+            </a>
+        </div>
+      </div>
+      <div class="b">
+        <div class="row">
+          <div class="four columns">
+              <h3 class="fancy-font west"><a href="https://rshah.org/blog">Blog</a></h3>
+          </div>
+          <div class="four columns middle">
+            <img class="prof-pic" src="public/prof-pic6.jpg" />
+          </div>
+          <div class="four columns">
+            <!-- <img class="prof-pic" src="public/prof-pic4.jpg" /> -->
+            <h3 class="fancy-font west"><a href="https://twitter.com/2016rshah">Twitter</a></h3>
+          </div>
+        </div>
+        <div class="south">
+            <a href="https://github.com/2016rshah">
+              <img id="placeholder3" src="public/empty.svg" class="gh-chart" />
+              <img id="actual3" class="gh-chart" />
+            </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section intro">
+      <h4 class="section-header">About me</h4>
+      <p>
+        I am a <a href="http://www.cs.utexas.edu/turing-scholars">Turing Scholar</a> studying Computer Science and Mathematics at the <a href="https://www.cs.utexas.edu/">University of Texas at Austin</a> (Class of 2020). Before that, I graduated from <a href="http://www.newsweek.com/2014/09/19/number-1-high-school-america-offers-real-head-start-268693.html">Thomas Jefferson High School for Science and Technology</a> (Class of 2016). 
+      </p>
+      <p>
+        I conduct program synthesis research under <a href="http://www.cs.utexas.edu/~isil/">Professor Işıl Dillig</a> as part of the <a href="http://utopia.cs.utexas.edu/">UToPiA research group</a>.</p>
+      <p>
+        I am the STEM Commitee Chairperson for <a href="https://moody.utexas.edu/centers/strauss/tx-votes">TX Votes</a> (a non-partisan civic engagement org on campus that primarily registers students to vote). I used to be an officer for UT's <a href="https://www.isss.io/">Information and Systems Security Society (ISSS)</a>.
+      </p>
+      <p>I <i id = "heart" class="fa fa-sm fa-heart"></i> <a href="http://bookshelf.rshah.org/users/1">reading</a>. Check out my recent reading lists: <a href="https://www.rshah.org/blog/posts/12-books-12-months-2017.html">(At Least) 12 Books in 12 Months - 2017</a>, <a href="https://www.rshah.org/blog/posts/12-books-12-months-2018.html">(At Least) 12 Books in 12 Months - 2018</a>, <a href="https://www.rshah.org/blog/posts/12-books-12-months-2019.html">(At Least) 12 Books in 12 Months - 2019</a>.
+      </p>
+      <p>
+        My pronouns are he/him/his. You can find me on <a href="/blog">my blog</a>, <a href="https://github.com/2016rshah">Github</a>, and <a href="https://twitter.com/2016rshah">Twitter</a>. You can also <a href="mailto:2016rshah@gmail.com">email me</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h4 id="publications" class="section-header center-text">Publications & Research</h4>
+      <div class="row">
+        <div class="twelve columns center-text">
+          <p>
+            <a href="http://www.cs.utexas.edu/~rshah/research/vldb20.pdf">Synthesizing Database Applications for Schema Refactoring</a><br>
+            Yuepeng Wang, <u>Rushi Shah</u>, Abby Criswell, Rong Pan, Isil Dillig<br>
+            <em>Very Large DataBases (VLDB) 2020</em>.</p>
+          <p>
+            <a href="https://thedailytexan.com/2020/03/01/texas-felon-disenfranchisement-enables-institutional-racism">Texas Felon Disenfranchisement Enables Institutional Racism</a><br>
+            <u>Rushi Shah</u><br>
+            <em>The Daily Texan</em>.</p>
+          <p>
+            <a href="http://www.cs.utexas.edu/~rshah/research/pldi19.pdf">Synthesizing Database Applications for Schema Refactoring</a><br>
+            Yuepeng Wang, James Dong, <u>Rushi Shah</u>, Isil Dillig<br>
+            <em>Programming Languages Design & Implementation (PLDI) 2019</em>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4 class="section-header center-text">Work Experience</h4>
+      <div class="row">
+        <div class="six columns center-text">
+          <h6 class="section-header"><a href="http://www.cs.utexas.edu/~isil/cs389L/">CS389L: Graduate Automated Logical Reasoning</a></h6>
+          <img class="" src="http://www.cs.utexas.edu/~isil/cs389L/logic-icon.png" />
+          <p>I served as a teaching assistant for 60 UT Austin Master's and Ph.D. students in Professor Isil Dillig's <i>CS389L: Graduate Automated Logical Reasoning</i> class during the Spring of 2019. I graded their weekly proof-based homeworks, helped grade their midterm exam and their final exam, and held well-attended weekly office hours.</p>
+        </div>
+        <div class="six columns center-text">
+          <h6 class="section-header"><a href="https://www.amazon.co.jp/">Amazon Japan</a></h6>
+          <img class="mitre-img" src="public/amazon.jpg" />
+          <p>I interned at Amazon in their Tokyo, Japan office during the summer after my sophomore year of college. I worked on machine vision algorithms to track real-time, location-based purchase trends in order data</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="four columns center-text">
+          <h6 class="section-header"><a href="http://www.originate.com">Originate</a></h6>
+          <img class="mitre-img" src="public/originate-2.jpg" />
+          <p>I interned at Originate in their Manhattan, NYC office during the summer after my freshman year of college. Originate is a mid-sized software consulting company. I mainly did distributed computing work for data center workload analysis with Scala + Spark + Cassandra.</p>
+        </div>
+        <div class="four columns center-text">
+          <h6 class="section-header"><a href="http://www.mitre.org/">The MITRE Corporation</a></h6>
+          <img class="mitre-img" src="public/mitre-1.jpg" />
+          <p>
+            I interned at the MITRE Corporation in the Federal Aviation Administration Department during the summer before junior year and the summer before senior year of high school.
+            My natural language processing research improved the Closed Runway Operations Prevention Device (CROPD) which helps air traffic controllers prevent plane crashes. 
+            <!-- I adapted computational linguistics algorithms to call-sign identification task in over 25,000 transmissions and edited strict language model based on air traffic controller's emerging speech patterns.  -->
+          </p>
+        </div>
+<!--       </div>
+      <div class="row"> -->
+        <div class="four columns center-text">
+          <h6 class="section-header"><a href="http://nclud.com/">nclud</a></h6>
+          <!-- <img class="circle" src="public/nclud-2.png" /> -->
+          <div id="animation"></div>
+          <p>
+            I interned at nclud, a Washington DC based web design firm, during Spring Break of my junior year of high-school. My work was primarily in JavaScript, including the Meteor framework and ThreeJS animations (shown above).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4 class="section-header center-text">Selected Projects</h4>
+      <div class="grey-section docs-example">
+        <div class="row">
+          <div class="twelve columns">
+            <div class="row"><a href="https://github.com/2016rshah/githubchart-api" class="project-title">Github Chart API</a></div>
+            <img id="placeholder2" src="public/empty.svg" />
+            <img id="actual2" alt="2016rshah's Normal Github Chart" />
+            <p>Serves your github contributions calendar as an image (350+ Github stars)</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="six columns">
+            <a href="https://github.com/2016rshah/heckle" class="project-title">Heckle</a>
+            <img src="public/BlaTeX_screenshot.png" />
+            <p>Static site compiler in Haskell (75+ Github stars)</p>
+          </div>
+          <div class="six columns"> <!-- This is sketchy, I put three six-column blocks into one row so it looks right -->
+            <a href="https://github.com/Pynt/Pynt" class="project-title">Pynt</a> 
+            <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/181/626/datas/gallery.jpg" />
+            <p>Converts drawings into python (10+ Github stars)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4 class="section-header center-text">See Also</h4>
+      <div class="center-text">
+
+      </div>
+      <div class="row center-text">
+        <div style="height:1px;" class="three columns"></div>
+        <div class="three columns">
+          <h4><a href="/blog/">Blog</a></h4>
+        </div>
+        <div class="three columns">
+          <h4><a href="mailto:2016rshah@gmail.com">Email</a></h4>
+        </div>
+        <div style="height:1px;" class="three columns"></div>
+      </div>
+      <div class="row center-text">
+        <div style="height:1px;" class="three columns">.</div>
+        <div class="three columns">
+          <h4><a href="http://github.com/2016rshah">Github</a></h4>
+        </div>
+        <div class="three columns">
+          <h4><a href="http://twitter.com/2016rshah">Twitter</a></h4>
+        </div>
+        <div style="height:1px;" class="three columns">.</div>
+      </div>
+    </div>
+
+
+    <script>whenReady()</script>
+  </div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
 </html>
