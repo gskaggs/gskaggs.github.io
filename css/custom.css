@@ -8,11 +8,9 @@
 .header{
 	margin-top:7%;
 }
-
 .links{
   text-align:center;
 }
-
 #link-1{
 	display:none;
 }
@@ -22,7 +20,9 @@
 .link-3{
   margin-left:0px;
 }
-
+.tab {
+    text-indent:40px;
+}
 .prof-pic{
 	border-radius:50%;
 	height:275px;
