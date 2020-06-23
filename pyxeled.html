@@ -123,17 +123,32 @@
     <div class="section">
       <h4 class="section-header center-text">How it Works</h4>
       <p>
-        Pixel art derives its iconic aesthetic from two fundamental artistic constraints. The first is the characteristic low resolution of these images. The second constraint is that the image should use a limited color palette. That is, the number of distinct colors used in the end product should be minimal. When converting a normal image into pixel art, Pyxeled must deal with both of these constraints. It does so by the clever use of two clustering algorithms.
+        &emsp;Pixel art derives its iconic aesthetic from two fundamental artistic constraints: lower resolution and a limited color palette. That is, both the number of pixels and the number of distinct colors present in the end product should be minimal. When converting a normal image into pixel art, Pyxeled must deal with both of these constraints. It does so by the use of two intelligent clustering algorithms.
       </p>
       <p>
-        First, we use Simple Linear Interative Clustering (SLIC) to help preserve image features while dropping resolution. SLIC is similar to k-means clustering in a 5-dimensional positional / color space. More specifically, each iteration of SLIC involves clustering input pixels into groups called super-pixels. In particular, each input pixel is put in the super-pixel which is closest to it in color and position. 
+        &emsp;First, we use Simple Linear Interative Clustering (SLIC) to help preserve image features while dropping resolution. Each iteration of SLIC involves clustering input pixels into groups called super-pixels. These super-pixels represent the pixels of our output image and are spaced roughly evenly throughout the input image.
       </p>
       <p>
-        Now to optimally assign colors to these super-pixels while maintaining the constraint of limited palette size, we use a second clustering algorithm called Mass Constrained Deterministic Annealing (MCDA). This algorithm is significantly more complicated than SLIC and is based on the way atomic particles interact and bond as the temperature of a sytem is lowered. More precisely, each super-pixel represents a particle and each color in our palette represents a cluster of these particles. Initially, there is a high temperature in our system and thus the super-pixels are not clustered in any meaningful way. However, as time progresses we simulate the way clusters form as the temperature lowers. You can read more about this process in <a href="https://ieeexplore.ieee.org/document/726788">Kenneth Rose's original paper on MCDA.</a>
+        &emsp;To optimally assign colors to these super-pixels while maintaining the constraint of limited palette size, we use a second clustering algorithm called Mass Constrained Deterministic Annealing (MCDA). This algorithm is significantly more complicated than SLIC and is based on the way atomic particles interact and bond as the temperature of a sytem is lowered. More precisely, each super-pixel represents a particle and each color in our palette represents a cluster of these particles. Initially, there is a high temperature in our system and thus the super-pixels are not clustered in any meaningful way. However, as time progresses we simulate the way clusters form as the temperature lowers. 
       </p>
       <p>
-        Interestingly, each iteration of our algorithm involves a symbiotic application of both SLIC and MCDA. Effectivley, this allows the formation of the superpixels to adapt as MCDA converges on an optimal color palatte. Graphically, these process is depicted in the following image from <a href="https://dl.acm.org/doi/10.5555/2330147.2330154">Pixelated Image Abstraction:</a>
+        &emsp;Crucially, each iteration of our algorithm involves an application of both SLIC and MCDA. Effectivley, this allows the formation of the superpixels to adapt as MCDA converges on an optimal color palatte. Graphically, this process is depicted in the following image taken from <a href="https://dl.acm.org/doi/10.5555/2330147.2330154">Pixelated Image Abstraction:</a>
       </p>
+
+      <div class="grey-section docs-example">
+        <div class="row">
+          <div class="twleve columns" > 
+            <p>  </p>
+              <img src="public/pyxeled_overview.png"/></a>
+          </div> 
+        </div>
+      </div>
+
+      <p>
+        <br>&emsp;For more detailed information on the algorithms present in Pyxeled please refer to <a href="https://dl.acm.org/doi/10.5555/2330147.2330154">Pixelated Image Abstraction.</a> Additionally, you can read more about the math and physics behind MCDA in <a href="https://ieeexplore.ieee.org/document/726788">the original paper by Kenneth Rose.</a>
+      </p>
+
+
 
     </div>
 
