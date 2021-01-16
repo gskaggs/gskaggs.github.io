@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Research</title>
-  <meta name='description' content='Grant Skaggs  –  Computer Science student and researcher at UT Austin'>
+  <title>The Great Sand Dunes</title>
+  <meta name='description' content='Physical simulation of sand particles to render photo-realistic images of desert dunes and ripples.'>
 
-  <link rel="canonical" href="http://grantskaggs.com/research/">
+  <link rel="canonical" href="http://grantskaggs.com/The-Great-Sand-Dunes.html">
   <link rel="alternate" type="application/rss+xml" title="Skaggs" href="/feed.xml">
 
   <!-- Fonts -->
@@ -33,7 +33,7 @@
   
 
 <!-- begin header -->
-<header class="header header--top">
+<header class="header ">
   <div class="container">
     <div class="row">
       <div class="header__inner col col-12">
@@ -277,35 +277,409 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    <!-- begin hero -->
-
-<section class="hero">
-  <div class="hero__inner">
-    <div class="hero__image">
-      <img class="lazy" data-src="/images/50.jpg" alt="Research">
-    </div>
-    <div class="hero__content">
-      <h1 class="hero__title">Research</h1>
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col col-6 col-t-12">
+        <div class="image-box">
+          <img class="post-image lazy" data-src="/images/sand_dunes/procedural.png" alt="The Great Sand Dunes">
+        </div>
+      </div>
+      
+  
+      <div class="col col-6 col-t-12">
+        <div class="post-head__box">
+        
+          <div class="post__meta">
+            <span class="post__minutes">
+              
+              
+                3 min read
+              
+              <time class="post__date"
+                datetime="2020-05-31T19:00:00-05:00">May 31, 2020</time>
+            </span>
+          </div>
+        
+          <h2 class="post__title">The Great Sand Dunes</h2>
+        
+          <div class="post__bottom">
+        
+            <div class="post__author">
+              <a href="/about/" aria-label="Grant Skaggs"><img class="post__author-image"
+                  src="/images/prof_pic.jpeg" alt="Grant Skaggs's Picture"></a>
+            </div>
+        
+            <div class="post__bottom-meta">
+              <a href="/about/" class="post__author-link">Grant Skaggs</a>
+              
+              <span>in</span>
+              <span class="post-tags">
+                
+                <a href="/tag/Projects" class="post__tag">Projects</a>
+                
+              </span>
+              
+            </div>
+          </div>
+        
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- begin hero -->
-
-<!-- begin page -->
+<!-- begin post -->
 <div class="container">
-  <article class="page animate">
-    <div class="page__content">
-      <p>Currently, I’m doing research with <a href="https://www.cs.utexas.edu/~harwath/">Dr. David Harwath</a> at UT Austin, pursuing applications of machine learning to speech and language processing in a multimodal context.</p>
+  <article class="post animate">
 
-<p>In the summer of 2019, I did research under <a href="https://www.cs.utexas.edu/~lin/">Dr. Calvin Lin</a> at the intersection of computer achitecture and ML, exploring the use of LSTM networks to prefetch cache memory addresses.</p>
+    <div class="post__content">
+      <p><img src="/images/sand_dunes/title.png" alt="" /></p>
+
+<p>This was a course research project for CS 378H Computer Graphics Honors at UT Austin, which I completed in collaboration with my partner Rahul Krishnan. If you like this article, be sure to check out <a href="https://github.com/gskaggs/Pupilometer-Analysis">the project’s public GitHub repository.</a></p>
+
+<h2 id="how-it-works">How It Works</h2>
+<p>To create desert geometries, we simulated the physics of wind-blown sand particles. Additionally, to improve the realism of the images produced, we also implemented Catmull-Clark subdivision and procedurally generated noise.</p>
+
+<h3 id="physical-simulation"><em>Physical Simulation</em></h3>
+<p><strong>Height Map:</strong>
+We represent the desert floor as 2D grid of height values which we call the <em>height map</em>.
+At each time step of the simulation, the value at row <em>i</em> and column <em>j</em> of the map is updated with the following equation:
+<img src="/images/sand_dunes/hmap.png" alt="" />
+where <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20n_d" alt="equation" /> is the number of particles deposited at that point, <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20n_b" alt="equation" /> is the number of particles leaving that point, and <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20%5Cdelta" alt="equation" /> is the diameter of any given particle. 
+<img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20n_d" alt="equation" /> is determined by particle collisions with the floor, while <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20n_b" alt="equation" /> is either 1 or 0 and determined with a pseudo random number generator.</p>
+
+<p><strong>Particles:</strong>
+The particles are stored in a linked list. At each time step their individual velocities and positions are updated with the following equations:</p>
+
+<p><img src="/images/sand_dunes/particle.png" alt="" /></p>
+
+<p>where the <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20F_g" alt="equation" /> is the force of gravity and <img src="https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B200%7D%20%5Cfn_cm%20%5Ctiny%20F_d" alt="equation" /> is the force of drag from the wind.
+A particle’s initial velocity is determined by the wind velocity and direction, while a particle’s initial position is the physical location of the height map point where it was born.</p>
+
+<p><strong>Collision:</strong>
+When a particle collides with the floor, its velocity is attenuated and then redirected upwards.
+Then it can either stay alive and bounce if the magnitude of its resulting velocity is greater than some epsilon, or it can be deposited at that point in the floor otherwise.</p>
+
+<p>For more details regarding any aspect of the physical simulation we did please see Wang and Hu’s paper referenced below.</p>
+
+<h3 id="catmull-clark-subdivision"><em>Catmull-Clark Subdivision</em></h3>
+<p>The physical simulation above resulted in a mesh which was very polygonal. You could see individual triangles like how models were rendered on old game consoles such as the N64. To fix this, we implemented the classic Catmull-Clark algorithm whereby a surface is recursively subdivided and made incrementally smoother. For example, this image taken from <a href="https://en.wikipedia.org/wiki/Catmull%E2%80%93Clark_subdivision_surface">Wikipedia</a> depicts a cube which is made to increasingly approximate a sphere:
+<img src="/images/sand_dunes/cat-clark.png" alt="" /></p>
+
+<p>For a complete description of how the algorithm works, see the <a href="https://en.wikipedia.org/wiki/Catmull%E2%80%93Clark_subdivision_surface">Wikipedia article</a> mentioned above.</p>
+
+<h3 id="procedurally-generated-noise"><em>Procedurally Generated Noise</em></h3>
+<p>To add organic bumps and dune-like geometries to our desert, we implemented a form of noise generation whereby coarse noise is combined with upsampling increasingly finer grained noise. Graphically, the basics of this algorithm can be depicted simply:
+<img src="/images/sand_dunes/noise.png" alt="" /></p>
+
+<h3 id="rendering"><em>Rendering</em></h3>
+<p>We converted the polygonal mesh of the floor which results from the above algorithms into a triangular mesh which we rendered on the GPU using OpenGL.</p>
+
+<h2 id="example-images">Example Images</h2>
+<h4 id="sand-simulation-with-catmull-clark">Sand Simulation With Catmull-Clark:</h4>
+<p><img src="/images/sand_dunes/ripples.png" alt="" /></p>
+
+<h4 id="procedural-noise-with-sand-simulation-and-catmull-clark">Procedural Noise With Sand Simulation and Catmull-Clark:</h4>
+<p><img src="/images/sand_dunes/procedural.png" alt="" /></p>
+
+<h4 id="sand-simulation-without-catmull-clark-subdivisions">Sand Simulation Without Catmull-Clark Subdivisions:</h4>
+<p><img src="/images/sand_dunes/edgy.png" alt="" /></p>
+
+<h4 id="procedural-noise-without-sand-simulation">Procedural Noise Without Sand Simulation:</h4>
+<p><img src="/images/sand_dunes/bumpy.png" alt="" /></p>
+
+<h2 id="referenced-works">Referenced Works</h2>
+<p>The physical simulation math and physics came from:
+<em>Real-Time Simulation of Aeolian Sand Movement and Sand Ripple Evolution</em> by Ning Wang and Bao-Gang Hu.</p>
 
     </div>
+
+    <div class="post__share">
+      <div class="share__list">
+        <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://grantskaggs.com/The-Great-Sand-Dunes.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+
+        <a class="share__link share__twitter" href="https://twitter.com/intent/tweet?text=The%20Great%20Sand%20Dunes&url=http://grantskaggs.com/The-Great-Sand-Dunes.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+
+        <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://grantskaggs.com/The-Great-Sand-Dunes.html&amp;media=http://grantskaggs.com/images/sand_dunes/procedural.png&amp;description=The%20Great%20Sand%20Dunes" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+      </div>
+    </div>
+
+    <div class="post__navigation">
+      
+      
+      <a class="next" href="/Courses-at-UT-Austin.html">
+        <img class="post__nav-image lazy" data-src="/images/longhorn.jpg" alt="Courses I've Taken at UT Austin">
+        <div class="post__nav-box">
+          <div class="post__nav post__nav__next">Next Post <i class="ion ion-md-arrow-forward"></i></div>
+          <h4 class="post__nav__title">Courses I've Taken at UT Austin</h4>
+        </div>
+      </a>
+      
+    </div>
+
   </article>
 </div>
-<!-- end page -->
+<!-- end post -->
 
-<!-- begin portfolio -->
+
+
+
+
+
+
+<div class="container">
+  <div class="related-posts is-related">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <h3 class="related-title">You may also like</h3>
+          <div class="row grid">
+
+          
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/Refresh.html">
+                  <img class="lazy" data-src="/images/refresh/library.jpeg" alt="Refresh">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        2 min read
+                      
+                      <time class="article__date"
+                        datetime="2020-12-26T04:00:00-06:00">Dec 26, 2020</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Refresh</h2>
+
+                  <p class="article__excerpt">Spaced repetition application to help you remember more of what you read.</p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="Grant Skaggs"><img class="article__author-image lazy" data-src="/images/prof_pic.jpeg" alt="Grant Skaggs's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">Grant Skaggs</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/Projects" class="article__tag">Projects</a>
+                        
+                          <a href="/tag/Notes" class="article__tag">Notes</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+              
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+            
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/Loki.html">
+                  <img class="lazy" data-src="/images/loki.jpg" alt="Loki">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        4 min read
+                      
+                      <time class="article__date"
+                        datetime="2020-08-10T19:00:00-05:00">Aug 10, 2020</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Loki</h2>
+
+                  <p class="article__excerpt">Genetic Algorithms for the Iterated Prisoner's Dilemma</p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="Grant Skaggs"><img class="article__author-image lazy" data-src="/images/prof_pic.jpeg" alt="Grant Skaggs's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">Grant Skaggs</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/Projects" class="article__tag">Projects</a>
+                        
+                          <a href="/tag/Machine-Learning" class="article__tag">Machine-Learning</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+              
+            
+            
+            
+
+            
+
+            
+
+            <div class="article col col-4 col-d-6 col-t-12 grid__post">
+              <div class="article__inner">
+
+                
+                <a class="article__image" href="/Pyxeled.html">
+                  <img class="lazy" data-src="/images/pyxeled/purple_mountains.png" alt="Pyxeled">
+                </a>
+                
+
+                <div class="article__content">
+
+                  <div class="article__meta">
+                    <span class="article__minutes">
+                      
+                      
+                        2 min read
+                      
+                      <time class="article__date"
+                        datetime="2020-07-31T19:00:00-05:00">Jul 31, 2020</time>
+                    </span>
+                  </div>
+
+                  <h2 class="article__title">Pyxeled</h2>
+
+                  <p class="article__excerpt">Beautiful Pixel Art Powered by Machine Learning</p>
+
+                  <div class="article__bottom">
+
+                    
+                    <div class="article__author">
+                      <a href="/about/" aria-label="Grant Skaggs"><img class="article__author-image lazy" data-src="/images/prof_pic.jpeg" alt="Grant Skaggs's Picture"></a>
+                    </div>
+                    
+
+                    <div class="article__bottom-meta">
+                      
+                        <a href="/about/" class="article__author-link">Grant Skaggs</a>
+                      
+                      
+                      <span>in</span>
+                      <span class="article-tags">
+                        
+                          <a href="/tag/Projects" class="article__tag">Projects</a>
+                        
+                          <a href="/tag/Machine-Learning" class="article__tag">Machine-Learning</a>
+                        
+                      </span>
+                      
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            
+                
+                  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </main> 
   <!-- end content -->
